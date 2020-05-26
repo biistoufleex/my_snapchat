@@ -4,41 +4,23 @@ import * as ImagePicker from 'expo-image-picker';
 
 import splash from './assets/splash.png';
 export default function App() {
-  let [selectedImage, setSelectedImage] = React.useState(null);
 
-    let openImagePickerAsync = async () => {
-      let permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+  let a = 2
+  if (a === 1 ) {
 
-      if (permissionResult.granted === false) {
-        alert('Permission to access camera roll is required!');
-        return;
-      }
-
-      let pickerResult = await ImagePicker.launchImageLibraryAsync();
-      if (pickerResult.cancelled === true) {
-        return;
-      }
-
-      setSelectedImage({ localUri: pickerResult.uri });
-    };
-
-    if (selectedImage !== null) {
-      return (
-        <View style={styles.container}>
-          <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
-        </View>
-      );
-    }
-
+    return (
+      <View style={styles.container}>
+        <Text style={styles.instruction}>
+          Ici
+        </Text>
+      </View>
+    );
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.instruction}>
-        To share a photo press the button below
+        la
       </Text>
-
-      <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
-        <Text style={styles.buttonText}>Pick a photo</Text>
-      </TouchableOpacity>
     </View>
   );
 }
