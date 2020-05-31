@@ -1,27 +1,26 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, Image, View } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import { StyleSheet, Text, View, Button } from 'react-native';
+import Formulaire from './screens/Form';
+import Home from './screens/Home';
+import SelectImage from './screens/SelectImage';
+import ShowSnaps from './screens/ShowSnaps';
 
-import splash from './assets/splash.png';
+
+const Stack = createStackNavigator();
+
 export default function App() {
 
-  let a = 2
-  if (a === 1 ) {
-
-    return (
-      <View style={styles.container}>
-        <Text style={styles.instruction}>
-          Ici
-        </Text>
-      </View>
-    );
-  }
   return (
-    <View style={styles.container}>
-      <Text style={styles.instruction}>
-        la
-      </Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Formulaire">
+      <Stack.Screen name="Formulaire" component={Formulaire}/>
+      <Stack.Screen name="Home" component={Home}/>
+      <Stack.Screen name="SelectImage" component={SelectImage} />
+      <Stack.Screen name="ShowSnaps" component={ShowSnaps} />
+      </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 
@@ -31,25 +30,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  instruction: {
-    color: '#888',
-    fontSize: 18,
-    marginHorizontal: 15,
-    marginBottom: 10,
-  },
-  button: {
-    backgroundColor: 'blue',
-    padding: 20,
-    borderRadius: 5,
-  },
-  buttonText: {
-    fontSize: 20,
-    color: '#fff',
-  },
-  thumbnail: {
-    width: 300,
-    height: 300,
-    resizeMode: "contain"
   },
 });
